@@ -23,9 +23,7 @@ $uptime = ((get-date) - ($os.ConvertToDateTime($os.lastbootuptime))).Days
 
 #Create the new event source
 if (!(Get-Eventlog -LogName $eventLog -Source $eventSource)){
-
      New-EventLog -LogName $eventLog  -Source $eventSource
-
 }
 
 If($hour -lt 12 -or $hour -gt 16){ Write-Eventlog -LogName $eventLog -Source $eventSource -EntryType $eventType -EventID $eventID -Message "Will not reboot, outside of maintenance hours" }
